@@ -1,7 +1,7 @@
 learning-JavaScript
 ===================
 
-Native JavaScript learning  &amp;&amp; Examples
+原生JavaScript学习 -- Learning Native JavaScript &amp;&amp; Examples
 
 摘自：[原生javascript学习](http://js.fgm.cc/learn/)项目，在学习中，感觉如果能修改并添加自己的想法及示例那就更好了，于是一边学习，一边理解并把其示例展示在此项目中，也方便后期的维护管理
 
@@ -10,3 +10,5 @@ Native JavaScript learning  &amp;&amp; Examples
     $ cd your_repo_root/repo_name
     $ git fetch origin
     $ git checkout gh-pages
+
+    git push --set-upstream origin gh-pages
