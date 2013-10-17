@@ -56,12 +56,14 @@ var uyan_config = {
 };
     
 function loadjs(){
+    var bodybox = document.getElementsByTagName("body")[0];
+    
     // 创建 pre代码显示区
     var prebox = document.createElement("pre");
     prebox.id="prebox";
     prebox.className="prettyprint linenums";
     prebox.innerHTML = document.getElementById("precode").innerHTML.replace(/(^\s*)/g, "");
-    document.getElementsByTagName("body")[0].appendChild(prebox);
+    bodybox.appendChild(prebox);
     
     // copy 代码显示
     //document.getElementById("prebox").innerHTML = document.getElementById("precode").innerHTML.replace(/(^\s*)/g, "");
@@ -69,19 +71,19 @@ function loadjs(){
     // 加载 jQuery
     var elt = document.createElement("script");
     elt.src="http://code.jquery.com/jquery-1.8.3.min.js";
-    document.getElementsByTagName("body")[0].appendChild(elt);
+    bodybox.appendChild(elt);
     
       // 加载 友言
     var appenduyan = document.createElement("div");
     appenduyan.id="uyan_frame";
-    document.getElementsByTagName("body")[0].appendChild(appenduyan);
+    bodybox.appendChild(appenduyan);
     
     
     var elt1 = document.createElement("script");
     elt1.src="http://v1.uyan.cc/js/iframe.js?UYUserId=0";
     elt1.id="UYScript";
     elt1.async="";
-    document.getElementsByTagName("body")[0].appendChild(elt1);
+    bodybox.appendChild(elt1);
     
     // 加载 代码高亮
     //var elt2 = document.createElement("script");
