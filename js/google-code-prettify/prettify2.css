@@ -1,7 +1,12 @@
 /* 
  * make code pretty
  */
-
+.prettyprint {
+    width: 1000px;
+    margin: 20px auto;
+}
+ 
+ 
 .prettyprint *{
     background: none;
 }
@@ -35,6 +40,7 @@ pre .dec, code .dec { color: #3387CC; } /* decimal - blue */
   border: 1px solid #e1e1e8;
 }
 .prettyprint.linenums {
+    text-align: left;
   -webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
      -moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
           box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
@@ -48,9 +54,9 @@ ol.linenums li {
   padding-left: 12px;
   color: #bebec5;
   line-height: 20px;
+  list-style-type: decimal;
   /*text-shadow: 0 1px 0 #fff;*/
 }
-
 
 @media print {
   pre .str, code .str { color: #060; }

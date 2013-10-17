@@ -5,11 +5,11 @@
 **/
 
 .wrap {
-    width: 980px;
+    width: 1000px;
     margin: 0 auto;
 }
 
-
+#uyan_frame { width: 1000px; margin: 0 auto;}
 
 
 /*!
@@ -315,3 +315,4 @@ h6 small { font-size: 12px;}
     list-style: none;
 }
 
+.tc { text-align: center;}

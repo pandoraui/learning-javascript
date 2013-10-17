@@ -62,7 +62,8 @@ function loadjs(){
     var prebox = document.createElement("pre");
     prebox.id="prebox";
     prebox.className="prettyprint linenums";
-    prebox.innerHTML = document.getElementById("precode").innerHTML.replace(/(^\s*)/g, "");
+    var procode = document.getElementsByTagName("script")[0];
+    prebox.innerHTML = procode.innerHTML.replace(/(^\s*)/g, "");
     bodybox.appendChild(prebox);
     
     // copy 代码显示
