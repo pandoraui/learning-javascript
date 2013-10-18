@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>获取/设置表单元素的值</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+body,dl,dt,dd,p{margin:0;padding:0;}
+body{font-family:Tahoma;font-size:12px;}
+label,input,a{vertical-align:middle;}
+label{padding:0 10px 0 5px;}
+a{color:#09f;text-decoration:none;}
+a:hover{color:red;}
+dl{width:320px;margin:10px auto;padding:10px 5px;border:1px solid #666;border-radius:5px;background:#fafafa;}
+dt{padding-bottom:10px;border-bottom:1px solid #666;text-align:center;}
+dt label{font-weight:700;}
+p{margin-top:10px;}
+table{margin: 10px auto;}
+</style>
+<script id="precode">
+// 获取当前值
+
+// 设置变更
+</script>
+</head>
+<body>
+<dl>
+    <dt>获取/设置表单元素的值</dt>
+    <dd>
+        <table>
+            <tr>
+                <td><label><input type="text" value="张小三" /></label></td>
+                <td><button>取值</button><button>重设</button></td>
+            </tr>
+            <tr>
+                <td><label><input type="radio" name="radio" /> 男</label> <label><input type="radio" name="radio" /> 女</label></td>
+                <td><button>取值</button><button>重设</button></td>
+            </tr>
+            <tr>
+                <td><label><input type="checkbox" name="checkbox" /> 书籍</label> <label><input type="checkbox" name="checkbox" /> 音乐</label> <label><input type="checkbox" name="checkbox" /> 运动</label></td>
+                <td><button>取值</button><button>重设</button></td>
+            </tr>
+            <tr>
+                <td>
+                    <select>
+                        <option value="">请选择城市</option>
+                        <option value="北京">北京</option>
+                        <option value="上海">上海</option>
+                        <option value="天津">天津</option>
+                    </select>
+                </td>
+                <td><button>取值</button><button>重设</button></td>
+            </tr>
+        </table>
+    </dd>
+</dl>
+<p class="tc">1、获取表单元素当前值；2、设置更改当前值；</p>
+
+
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>
