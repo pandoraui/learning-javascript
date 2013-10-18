@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>单一按钮显示/隐藏</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+body,div,ul,li,h2{margin:0;padding:0;}
+body{font:12px/1.5 Tahoma;}
+ul{list-style-type:none;}
+#outer{width:200px;border:1px solid #aaa;margin:10px auto;}
+#outer h2{cursor:pointer;color:#57646E;font-size:14px;font-weight:400;border:1px solid;height:30px;line-height:30px;padding-left:10px;background:#ced3d7 url(img/ico.gif) 180px 15px no-repeat;border-color:#fff #e9edf2;}
+#outer h2.open{background-position:180px -12px;}
+#outer ul{border-top:1px solid #DEE3E6;}
+#outer li{height:25px;line-height:25px;vertical-align:top;}
+#outer a{display:block;color:#6b7980;background:#e9edf2;text-decoration:none;padding:0 10px;}
+#outer a:hover{background:#fff;text-decoration:underline;}
+</style>
+<script id="precode">
+window.onload = function (){
+    var oH2 = document.getElementsByTagName("h2")[0];
+    var oUl = document.getElementsByTagName("ul")[0];
+    oH2.onclick = function (){
+        var style = oUl.style;
+        style.display = style.display == "none" ? "block" : "none";
+        oH2.className = style.display == "none" ? "open" : ""
+    }
+}
+</script>
+</head>
+<body>
+<div id="outer">
+    <h2>播放列表...</h2>
+    <ul>
+        <li><a href="javascript:;">玩家之徒 - 蔡依林</a></li>
+        <li><a href="javascript:;">原谅我就是这样的女生 - 戴佩妮</a></li>
+        <li><a href="javascript:;">猜不透 - 丁当</a></li>
+        <li><a href="javascript:;">自导自演 - 周杰伦</a></li>
+        <li><a href="javascript:;">浪漫窝 - 弦子</a></li>
+        <li><a href="javascript:;">流年 - 王菲</a></li>
+    </ul>
+</div>
+
+
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>
