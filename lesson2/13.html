@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>获取/设置表单元素的值</title>
+<title>操作 input 标签</title>
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
 <style>
@@ -19,38 +19,38 @@ p{margin-top:10px;}
 table{margin: 10px auto;}
 </style>
 <script id="precode">
-// 获取当前值
-
-// 设置变更
+window.onload = function(){
+    // input
+    var oInput = document.getElementById("input");
+    var getValueInput = document.getElementById("getValueInput");
+    var setValueInput = document.getElementById("setValueInput");
+    // 获取 input值
+    getValueInput.onclick = function(){
+        alert(oInput.value);
+    }
+    // 设置 input值
+    setValueInput.onclick = function(){
+        oInput.value = "王小五";
+    }
+}
 </script>
 </head>
 <body>
 <dl>
-    <dt>获取/设置表单元素的值</dt>
+    <dt>操作 input 标签</dt>
     <dd>
         <table>
             <tr>
-                <td><label><input type="text" value="张小三" /></label></td>
-                <td><button>取值</button><button>重设</button></td>
+                <td><label><input id="input" type="text" value="张小三" /></label></td>
+                <td><button id="getValueInput">取值</button><button id="setValueInput">设值</button></td>
             </tr>
             <tr>
                 <td><label><input type="radio" name="radio" /> 男</label> <label><input type="radio" name="radio" /> 女</label></td>
-                <td><button>取值</button><button>重设</button></td>
+                <td><button>取值</button><button>设值</button></td>
             </tr>
             <tr>
                 <td><label><input type="checkbox" name="checkbox" /> 书籍</label> <label><input type="checkbox" name="checkbox" /> 音乐</label> <label><input type="checkbox" name="checkbox" /> 运动</label></td>
-                <td><button>取值</button><button>重设</button></td>
-            </tr>
-            <tr>
-                <td>
-                    <select>
-                        <option value="">请选择城市</option>
-                        <option value="北京">北京</option>
-                        <option value="上海">上海</option>
-                        <option value="天津">天津</option>
-                    </select>
-                </td>
-                <td><button>取值</button><button>重设</button></td>
+                <td><button>取值</button><button>设值</button></td>
             </tr>
         </table>
     </dd>
