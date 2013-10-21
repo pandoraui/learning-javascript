@@ -17,6 +17,7 @@ dt{padding-bottom:10px;border-bottom:1px solid #666;text-align:center;}
 dt label{font-weight:700;}
 p{margin-top:10px;}
 table{margin: 10px auto;}
+td{vertical-align: top;}
 ul{list-style:none;line-height:22px;}
 </style>
 <script id="precode">
@@ -29,30 +30,72 @@ window.onload = function(){
     // 获取 select 选项值
     getValueSelect.onclick = function(){
         var selectIndex = select.selectedIndex;     //获得是第几个被选中了
-        var selectText  = select.options[selectIndex].text; //获得被选中的项目的文本（.text也可用.value）
-        alert("第"+ selectIndex + "项被选中了，它的值是" + selectText);
+        var selectText  = select.options[selectIndex].text; //获得被选中的项目的文本（.text）
+        var selectValue  = select.options[selectIndex].value; //获得被选中的项目的值（.value）
+        if(selectIndex == 0){
+            alert("你还没有选择城市");
+        }else {
+            alert('选中第'+ selectIndex + '项，  值是"' + selectValue + '"，  文本是"' + selectText + '"');
+        }
     }
-    // 设置 select 选项值
-    setValueSelect.onclick = function(){
-        
+    // 重置 select 选项值
+    resetValueSelect.onclick = function(){
+        select.value = "";
     }
     
-    // select 多选
+    
     var mselect = document.getElementById("mselect");
     var getValuemSelect = document.getElementById("getValuemSelect");
-    var setValuemSelect = document.getElementById("setValuemSelect");
-    // 获取 select 选项值
-    getValueSelect.onclick = function(){
+    var resetValuemSelect = document.getElementById("resetValuemSelect");
+    
+    // 获取 多选select 选项值
+    getValuemSelect.onclick = function(){
         var mValue = "";
-        //for(var i=0;i < mselect.options.length;i++){
-        //    mValue += mselect.options(i).selected + "，";
-        //}
+        for(var i=0;i < mselect.options.length;i++){
+            if(mselect.options[i].selected){
+                mValue += mselect.options[i].value + "，";
+            }
+        }
         alert(mValue);
     }
-    // 设置 select 选项值
-    setValuemSelect.onclick = function(){
-        
+    
+    // 重置 多选select 选项值
+    resetValuemSelect.onclick = function(){
+        for(var i=0;i < mselect.options.length;i++){
+            mselect.options[i].selected = false;
+        }
     }
+    
+    document.getElementById("checkAll").onclick = function(){
+        for(var i=0;i < mselect.options.length;i++){
+            if(mselect.options[i].value != ""){
+                mselect.options[i].selected = true;
+            }
+        }
+    }
+    
+    document.getElementById("checkOpp").onclick = function(){
+        for(var i=0;i < mselect.options.length;i++){
+            if(mselect.options[i].value != ""){
+                //var bool = mselect.options[i].selected;
+                mselect.options[i].selected == true ? mselect.options[i].selected = false : mselect.options[i].selected = true;
+            }
+        }
+    }
+}
+
+// mselect 多选(要放到onload外)
+function checkselect(objname){
+    o = document.getElementById(objname);
+    t = document.getElementById("output");
+    var intvalue="";
+    for(i=0; i < o.options.length; i++){
+        if(o.options[i].selected){
+            intvalue += o.options[i].value + ",";
+        }
+    }
+    t.value=intvalue.substr(0,intvalue.length-1);
+    //alert(intvalue);
 }
 </script>
 </head>
@@ -64,25 +107,35 @@ window.onload = function(){
             <tr>
                 <td>
                     <select id="select">
-                        <option value="请选择城市">请选择城市</option>
-                        <option value="北京">北京</option>
-                        <option value="上海">上海</option>
-                        <option value="天津">天津</option>
+                        <option value="">请选择城市</option>
+                        <option value="北京市">北京</option>
+                        <option value="上海市">上海</option>
+                        <option value="天津市">天津</option>
                     </select>
                 </td>
-                <td><button id="getValueSelect">取值</button><button id="setValueSelect">设值</button></td>
+                <td>
+                    <button id="getValueSelect">获取选中项</button><br>
+                    <button id="resetValueSelect">重置选中项</button><br>
+                </td>
             </tr>
+            <tr><td colspan=2>更多操作参看下面 <strong>增删改查</strong> 各方法</td></tr>
             <tr>
                 <td>
-                    <select multiple="multiple" size="2" id="mselect">
-                        <option value="你的爱好是？">你的爱好是？</option>
+                    <select multiple="multiple" size="3" id="mselect">
+                        <option value="">你的爱好是？</option>
                         <option value="读书">读书</option>
                         <option value="运动">运动</option>
                         <option value="唱歌">唱歌</option>
                     </select>
                 </td>
-                <td><button id="getValuemSelect">取值</button><button id="setValuemSelect">设值</button></td>
+                <td>
+                    <button id="getValuemSelect">获取选中项</button><br>
+                    <button id="resetValuemSelect">重置选中项</button><br>
+                    <button id="checkAll">全选</button><br>
+                    <button id="checkOpp">反选</button><br>
+                </td>
             </tr>
+            <tr><td colspan=2><input type="button" onclick="checkselect('mselect')" value="输出">选中项：<input type="text" id="output"></td></tr>
         </table>
     </dd>
 </dl>
@@ -104,7 +157,7 @@ window.onload = function(){
     </ul>
 </div>
 <pre class="prettyprint linenums">
-// js 代码
+/* js 代码
 // 1.判断select选项中 是否存在Value="paraValue"的Item
 function jsSelectIsExitItem(objSelect, objItemValue) {
     var isExit = false;
@@ -204,6 +257,7 @@ var currSelectIndex = document.all.objSelect.selectedIndex;
 
 // 11.清空select的项
 document.all.objSelect.options.length = 0;
+*/
 </pre>
 <script src="../js/google-code-prettify/prettify.js" async="async"></script>
 <script src="../js/learn.js" async="async"></script>
