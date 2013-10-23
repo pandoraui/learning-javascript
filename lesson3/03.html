@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>累加按钮，自加1</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+input{font:12px arial;cursor:pointer;padding:0 10px;}
+</style>
+<script id="precode">
+window.onload = function (){
+    var aBtn = document.getElementsByTagName("input")[0];
+    var i = 0;
+    
+    aBtn.onclick = function (){
+        aBtn.value = ++i;
+        //alert(i)
+    }
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="tc"><input type="button" value="0" /></p>
+
+</div>
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>输入两个数字，比较大小</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+.num{text-align:center;font:700 30px/1.5 arial;}
+</style>
+<script id="precode">
+window.onload = function (){
+    //var oBody = document.body;
+    var oNum = document.getElementsByTagName("p")[0];
+    var i = 0;
+    setInterval(updateNum, 1000);
+    updateNum();
+    function updateNum(){
+        oNum.innerHTML = ++i;
+    }
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="num"></p>
+
+
+</div>
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>简易网页时钟</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+body,div{margin:0;padding:0;}
+#clock{color:#fff;font:16px/1.5 \5fae\8f6f\96c5\9ed1;}
+#clock{width:300px;text-align:center;background:#1a1a1a;margin:10px auto;padding:20px 0;}
+#clock span{color:#000;width:80px;line-height:2;background:#fbfbfb;border:2px solid #b4b4b4;margin:0 10px;padding:0 10px;}
+</style>
+<script id="precode">
+window.onload = function (){
+    var oClock = document.getElementById("clock");
+    var aSpan = oClock.getElementsByTagName("span");
+        
+    setInterval(getTimes, 1000);
+    getTimes();
+    function getTimes (){
+        var oDate = new Date();
+        var aDate = [oDate.getHours(), oDate.getMinutes(), oDate.getSeconds()];
+        for (var i in aDate) aSpan[i].innerHTML = format(aDate[i]);
+    }
+    function format(a){
+        return a.toString().replace(/^(\d)$/, "0$1");
+    }
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<div id="clock">
+    <span></span>点<span></span>分<span></span>秒
+</div>
+
+</div>
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>
