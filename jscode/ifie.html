@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>js 条件注释 仅IE执行</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+.red{color:#f00;font-size:30px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h4>如果你是在IE中，下面会显示红色的“In old IE”</h4>
+<p class="red"></p>
+<p></p>
+<p><strong>提醒：</strong>在 IE11 中未起效，IE10 未测试</p>
+</div>
+<script id="precode">
+var oBox = document.getElementsByTagName("p");
+/*@cc_on
+ @if (@_jscript)
+    // 该代码位于一条JS注释内但在IE中执行它（IE11不起效）
+    //alert("In IE");
+    oBox[0].innerHTML = "In old IE";
+ @end
+ @*/
+ 
+/*@cc_on
+ @if (@_jscript)
+    // 这里的代码在一条条件注释中，也在一条常规的JavaScript注释中
+    // IE会执行这段代码，其他浏览器不执行
+    oBox[1].innerHTML = "You are using old Internet explorer !";
+ @else*/
+    // 这段代码并没有在JavaScript注释中，但仍然在IE条件注释中
+    // 也就是说除了IE之外的所有浏览器都执行这里的代码
+    oBox[1].innerHTML = "You are not using old Internet explorer !";
+/*@end
+ @*/
+</script>
+<!--[if IE]><script src="excanvas.js">//扩展IE支持canvas</script><![endif]-->
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>
