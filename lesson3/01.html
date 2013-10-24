@@ -8,13 +8,21 @@
 <style>
 pre{color:green;padding:10px 15px;background:#f0f0f0;border:1px dotted #333;font:12px/1.5 Courier New;}
 span{color:#999;}
+.prettyprint{display:none;}
 </style>
 <script id="precode">
-
+window.onload = function (){
+    var oBox = document.getElementsByTagName("p")[0];
+    oBox.innerHTML = ("typeof 12345    " + typeof 12345 + "<br>"
+            + 'typeof \"abc\"    ' + typeof "abc" + "<br>"
+            + "typeof document " + typeof document);
+};
 </script>
 </head>
 <body>
 <div class="wrap">
+
+<p></p>
 
 <pre>
 &lt;script type="text/javascript"&gt;
@@ -23,14 +31,6 @@ span{color:#999;}
     alert(typeof document); <span>//输出object</span>
 &lt;/script&gt;
 </pre>
-<script>
-alert("typeof 12345     " + typeof 12345 + "\
-    \n\ntypeof \"abc\"  " + typeof "abc" + "\
-    \n\ntypeof document " + typeof document
-    );
-</script>
-
-
 
 
 </div>

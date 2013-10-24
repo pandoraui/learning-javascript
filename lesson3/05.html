@@ -14,6 +14,8 @@ window.onload = function (){
     var oNum = document.getElementsByTagName("p")[0];
     var i = 0;
     setInterval(updateNum, 1000);
+    
+    // 此处可以不用初始调用一次
     updateNum();
     function updateNum(){
         oNum.innerHTML = ++i;
