@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>正则应用练习</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+body{font:12px/1.5 arial;}
+</style>
+<script id="precode">
+window.onload = function (){
+    
+};
+</script>
+</head>
+<body>
+<div class="wrap">
+    <h4>正则表达式</h4>
+    <p>首先请阅读 <a target="_blank" href="http://pandoraui.github.io/jquery-chm/regexp.html">正则表达式速查表</a> 或 <a target="_blank" href="http://www.w3school.com.cn/js/jsref_obj_regexp.asp">JavaScript RegExp 对象参考手册</a>，熟记基本规则。</p>
+    
+    
+    <h4>正则函数</h4>
+    <p>其次熟悉，JS正则函数match、exec、test、search、replace、split等，包括使用介绍及注意事项。详情请浏览 <a target="_blank" href="http://www.w3school.com.cn/js/jsref_obj_regexp.asp">JavaScript RegExp 对象参考手册</a>，如下：</p>
+    <table class="table-info">
+        <tbody>
+            <tr>
+                <th colspan="4">RegExp 对象方法</th>
+            </tr>
+            <tr>
+                <th style="width:20%">方法</th>
+                <th style="width:66%">描述</th>
+                <th style="width:7%">FF</th>
+                <th style="width:7%">IE</th>
+            </tr>
+            <tr>
+                <td><a target="_blank" href="http://www.w3school.com.cn/js/jsref_regexp_compile.asp">compile</a></td>
+                <td>编译正则表达式。</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td><a target="_blank" href="http://www.w3school.com.cn/js/jsref_exec_regexp.asp">exec</a></td>
+                <td>检索字符串中指定的值。返回找到的值，并确定其位置。</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td><a target="_blank" href="http://www.w3school.com.cn/js/jsref_test_regexp.asp">test</a></td>
+                <td>检索字符串中指定的值。返回 true 或 false。</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+            
+        <tbody>
+            <tr>
+                <th colspan="4">支持正则表达式的 String 对象的方法</th>
+            </tr>
+            <tr>
+                <td><a target="_blank" href="http://www.w3school.com.cn//js/jsref_search.asp">search</a></td>
+                <td>检索与正则表达式相匹配的值。</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td><a target="_blank" href="http://www.w3school.com.cn//js/jsref_match.asp">match</a></td>
+                <td>找到一个或多个正则表达式的匹配。</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td><a target="_blank" href="http://www.w3school.com.cn//js/jsref_replace.asp">replace</a></td>
+                <td>替换与正则表达式匹配的子串。</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td><a target="_blank" href="http://www.w3school.com.cn//js/jsref_split.asp">split</a></td>
+                <td>把字符串分割为字符串数组。</td>
+                <td>1</td>
+                <td>4</td>
+            </tr>
+        </tbody>
+    </table>
+    
+    
+    <h4>正则练习</h4>
+    <p>练习实现最常用的正则表达式，分析肯能遇到的问题及解决办法</p>
+    <ul>
+        <li>写一个验证QQ号码的正则表达式(注意：连续调用两次test()方法后不要第二次的test总会返回一个false的结果)</li>
+        <li></li>
+    </ul>
+    
+<pre class="prettyprint linenums">
+// 验证QQ
+var regexpQQ = /^[1-9]\d{4,10}$/gi;
+var str = "123456";     //返回true
+alert(regexpQQ.test(str));
+// 1、每个正则表达式都有一个 lastIndex 属性，用于记录上一次匹配结束的位置，下一次调用时从该位置继续搜索，解决办法，将正则表达式的 lastIndex 属性设置为0 
+regexpQQ.lastIndex=0;
+// 2、把g去掉就行了，g就是继续往下的意思，不是必要别加g，i是不区分大小写的，这里也没有必要，直接var regexpQQ = /^[1-9]\d{4,10}$/ 就可以
+总结：一共有两种解决办法
+1. 正则模式去掉全局模式
+2. 重新设置lastIndex为0
+</pre>
+    
+</div>
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>

@@ -24,6 +24,7 @@ window.onload = function (){
         for (var i in aDate) aSpan[i].innerHTML = format(aDate[i]);
     }
     function format(a){
+        // 添加前导零
         return a.toString().replace(/^(\d)$/, "0$1");
     }
 }
