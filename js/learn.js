@@ -83,7 +83,7 @@ function loadjs(){
     var elt1 = document.createElement("script");
     elt1.src="http://v1.uyan.cc/js/iframe.js?UYUserId=0";
     elt1.id="UYScript";
-    elt1.async="";
+    elt1.async="async";
     bodybox.appendChild(elt1);
     
     // 加载 代码高亮

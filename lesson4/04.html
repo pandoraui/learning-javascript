@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>agruments应用——求出函数参数的总合</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+
+</style>
+<script id="precode">
+window.onload = function(){
+    var i = iResult = 0;
+    function sum(){
+        for (var i = 0; i < arguments.length; i++){
+            iResult += arguments[i];
+        }
+        return iResult;
+    }
+    //应用
+    var oInput = document.getElementsByTagName("input")[0];
+    oInput.value = sum(1,2,3,4,5,6,7,8,9,10); // 输出55
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+
+输出结果：<input type="text" readonly type="" />
+
+
+</div>
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>
