@@ -54,7 +54,13 @@ var uyan_config = {
     'title':'前端开发框架 #pandora#', 
     'du':'pandoraui.com'
 };
-    
+
+var Gp = {
+    encodeHtml: function(a) {
+        return a.replace(/(^\s*)/g, "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/'/g, "&#039;").replace(/"/g, "&quot;")
+    }
+}
+
 function loadjs(){
     var bodybox = document.getElementsByTagName("body")[0];
     
@@ -63,7 +69,7 @@ function loadjs(){
     prebox.id="prebox";
     prebox.className="prettyprint linenums";
     var procode = document.getElementsByTagName("script")[0];
-    prebox.innerHTML = procode.innerHTML.replace(/(^\s*)/g, "");
+    prebox.innerHTML = Gp.encodeHtml(procode.innerHTML);
     bodybox.appendChild(prebox);
     
     // copy 代码显示

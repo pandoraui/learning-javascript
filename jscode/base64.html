@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>转换base64加密</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+</style>
+<script id="precode">
+window.onload = function(){ 
+    var input = document.getElementById("demo_input"); 
+    var result= document.getElementById("result"); 
+    var img_area = document.getElementById("img_area"); 
+    if ( typeof(FileReader) === 'undefined' ){ 
+        result.innerHTML = "抱歉，你的浏览器不支持 FileReader，请使用现代浏览器操作！"; 
+        input.setAttribute( 'disabled','disabled' ); 
+    } else { 
+        input.addEventListener( 'change',readFile,false );
+    } 
+    
+    
+    var oInbox = document.getElementById("inbox");
+    var oOutbox = document.getElementById("outbox");
+    var enCode = document.getElementById("encode");
+    var deCode = document.getElementById("decode");
+    var enCodeurl = document.getElementById("encodeurl");
+    
+    var base64 = new Base64();
+    enCode.onclick = function(){
+        //console.log(oInbox.value);
+        oInbox.value == "" ? alert("请输入要加密的内容") : (oOutbox.value = base64.encode(oInbox.value))
+    };
+    deCode.onclick = function(){
+        oOutbox.value == "" ? alert("请输入要解密的内容") : (oInbox.value = base64.decode(oOutbox.value))
+    };
+    enCodeurl.onclick = function(){
+        var urlstr = oInbox.value;
+        oOutbox.value = urlstr;
+        var url = urlstr.match(/(.+)\?(.+)/)
+        //console.log(url);
+        oInbox.value == "" ? alert("请输入要加密的链接") : (oOutbox.value = url[1]+ "?" + base64.encode(url[2]));
+    };
+}
+
+function readFile(){ 
+    var file = this.files[0]; 
+    //这里我们判断下类型如果不是图片就返回 去掉就可以上传任意文件 
+    if(!/image\/\w+/.test(file.type)){ 
+        alert("请确保文件为图像类型"); 
+        return false; 
+    } 
+    var reader = new FileReader(); 
+    reader.readAsDataURL(file); 
+    reader.onload = function(e){ 
+        result.innerHTML = '<img src="'+this.result+'" alt=""/>'; 
+        img_area.innerHTML = '<div class="sitetip">图片img标签展示：</div><img src="'+this.result+'" alt=""/>'; 
+    } 
+};
+</script>
+<script src="../js/base64.js"></script>
+</head>
+<body>
+<div class="wrap">
+    <div class="inputbox">
+        <h4>要加密的内容：</h4>
+        <textarea id="inbox" rows="10" style="width:96%">http://lvmamim.allyes.com/main/s?user=lvmama_2013|index_2013|index_2013_focus01&db=lvmamim&border=0&local=yes&kv=key|SH</textarea>
+    </div>
+    <input id="encode" type="button" value="base64加密" />
+    <input id="decode" type="button" value="base64解密" />
+    <input id="encodeurl" type="button" value="base64加密url搜索参数" title="URL第一个?之后的部分" />
+    <div class="outputbox">
+        <h4>base64加密结果：</h4>
+        <textarea id="outbox" rows="10" style="width:96%"></textarea>
+    </div>
+    
+    
+    <h1>将图片转化为data:image base64格式</h1>
+    <p>注意：不支持IE6/7</p>
+    <input type="file" value="sdgsdg" id="demo_input" /> 
+    <textarea id="result" rows="20" style="width:96%" ></textarea> 
+    <p id="img_area"></p> 
+    
+</div>
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>
