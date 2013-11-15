@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>转换base64加密</title>
+<title>加密、解密转换</title>
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
 <style>
@@ -25,6 +25,7 @@ window.onload = function(){
     var enCode = document.getElementById("encode");
     var deCode = document.getElementById("decode");
     var enCodeurl = document.getElementById("encodeurl");
+    var dnCodeurl = document.getElementById("decodeurl");
     
     var base64 = new Base64();
     enCode.onclick = function(){
@@ -40,6 +41,13 @@ window.onload = function(){
         var url = urlstr.match(/(.+)\?(.+)/)
         //console.log(url);
         oInbox.value == "" ? alert("请输入要加密的链接") : (oOutbox.value = url[1]+ "?" + base64.encode(url[2]));
+    };
+    dnCodeurl.onclick = function(){
+        var urlstr = oOutbox.value;
+        oInbox.value = urlstr;
+        var url = urlstr.match(/(.+)\?(.+)/)
+        //console.log(url);
+        oOutbox.value == "" ? alert("请输入要加密的链接") : (oInbox.value = url[1]+ "?" + base64.decode(url[2]));
     };
 }
 
@@ -62,6 +70,7 @@ function readFile(){
 </head>
 <body>
 <div class="wrap">
+    <h2>加密、解密转换</h2>
     <div class="inputbox">
         <h4>要加密的内容：</h4>
         <textarea id="inbox" rows="10" style="width:96%">http://lvmamim.allyes.com/main/s?user=lvmama_2013|index_2013|index_2013_focus01&db=lvmamim&border=0&local=yes&kv=key|SH</textarea>
@@ -69,13 +78,14 @@ function readFile(){
     <input id="encode" type="button" value="base64加密" />
     <input id="decode" type="button" value="base64解密" />
     <input id="encodeurl" type="button" value="base64加密url搜索参数" title="URL第一个?之后的部分" />
+    <input id="decodeurl" type="button" value="base64解密url" />
     <div class="outputbox">
-        <h4>base64加密结果：</h4>
+        <h4>加密结果：</h4>
         <textarea id="outbox" rows="10" style="width:96%"></textarea>
     </div>
     
     
-    <h1>将图片转化为data:image base64格式</h1>
+    <h2>将图片转化为data:image base64格式</h2>
     <p>注意：不支持IE6/7</p>
     <input type="file" value="sdgsdg" id="demo_input" /> 
     <textarea id="result" rows="20" style="width:96%" ></textarea> 
