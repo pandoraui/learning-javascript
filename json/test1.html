@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title>JSON</title>
+<script>
+
+// 描述一个人
+var person = {
+    "Name": "Bob",
+    "Age": 32,
+    "Company": "IBM",
+    "Engineer": true
+}
+
+// 获取这个人的信息
+var personAge = person.Age;
+console.log(person.Age);
+
+
+// 描述几个人
+var members = [
+    {
+        "Name": "Bob",
+        "Age": 32,
+        "Company": "IBM",
+        "Engineer": true
+    },
+    {
+        "Name": "John",
+        "Age": 20,
+        "Company": "Oracle",
+        "Engineer": false
+    },
+    {
+        "Name": "Henry",
+        "Age": 45,
+        "Company": "Microsoft",
+        "Engineer": false
+    }
+]
+
+// 读取其中John的公司名称
+var johnsCompany = members[1].Company;
+console.log(members[1].Company);
+
+
+// 描述一次会议
+var conference = {
+    "Conference": "Future Marketing",
+    "Date": "2012-6-1",
+    "Address": "Beijing",
+    "Members": 
+    [
+        {
+            "Name": "Bob",
+            "Age": 32,
+            "Company": "IBM",
+            "Engineer": true
+        },
+        {
+            "Name": "John",
+            "Age": 20,
+            "Company": "Oracle",
+            "Engineer": false
+        },
+        {
+            "Name": "Henry",
+            "Age": 45,
+            "Company": "Microsoft",
+            "Engineer": false
+        }
+    ]
+}
+
+// 读取参会者Henry是否工程师
+var henryIsAnEngineer = conference.Members[2].Engineer;
+console.log(conference.Members[2].Engineer);
+
+
+</script>
+</head>
+<body>
+    
+    <p>本文摘自：<a href="http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html">【原创】说说JSON和JSONP，也许你会豁然开朗，含jQuery用例</a></p>
+    
+    <p>效果参看控制台及源码</p>
+    
+</body>
+</html>
