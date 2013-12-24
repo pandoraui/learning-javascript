@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>用户按下键盘，显示keyCode</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+.p{
+    text-align:center;
+    font:30px/1.5 \5fae\8f6f\96c5\9ed1, arial;  
+}
+</style>
+<script id="precode">
+window.onload = function (){
+    var oP = document.getElementsByTagName("p")[0];
+    document.onkeydown = function (event){
+        var event = event || window.event;
+        oP.innerHTML = event.keyCode;
+        return false
+    }
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+<p class="p">这里将显示您按下键的 keyCode</p>
+
+
+</div>
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>

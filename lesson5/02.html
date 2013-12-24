@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>显示单击的坐标</title>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
+<style>
+
+</style>
+<script id="precode">
+document.onclick = function (event){
+    var event = event || window.event;
+    alert("坐标：[" + event.clientX + ", " + event.clientY + "]")
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+
+
+</div>
+<script src="../js/google-code-prettify/prettify.js" async="async"></script>
+<script src="../js/learn.js" async="async"></script>
+</body>
+</html>
