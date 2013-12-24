@@ -5,6 +5,7 @@
     width: 964px;
     margin: 20px auto;
     white-space: pre;
+    white-space: pre-wrap;
 }
 .wrap .prettyprint {
     width: auto;
