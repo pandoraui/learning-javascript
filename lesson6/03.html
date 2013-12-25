@@ -6,11 +6,11 @@
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../js/google-code-prettify/prettify2.css">
 <style>
-html,body{height:100%;overflow:hidden;}
+html,body{overflow:hidden;position:relative;}
 body,div,ul,li{margin:0;padding:0;}
 body{font:12px/1.5 \5fae\8f6f\96c5\9ed1;}
 ul{list-style-type:none;}
-#rightMenu{position:absolute;top:-9999px;left:-9999px;}
+#rightMenu{position:absolute;z-index:100;top:-9999px;left:-9999px;}
 #rightMenu ul{float:left;border:1px solid #979797;background:#f1f1f1 url(img/line.png) 24px 0 repeat-y;padding:2px;box-shadow:2px 2px 2px rgba(0,0,0,.6);}
 #rightMenu ul li{float:left;clear:both;height:24px;cursor:pointer;line-height:24px;white-space:nowrap;padding:0 30px;}
 #rightMenu ul li.sub{background-repeat:no-repeat;background-position:right 9px;background-image:url(img/arrow.png);}
@@ -82,15 +82,13 @@ window.onload = function (){
             
             clearTimeout(showTimer);
             hideTimer = setTimeout(function (){
-                for (i = 0; i < oThis.parentNode.children.length; i++)
-                {
+                for (i = 0; i < oThis.parentNode.children.length; i++){
                     oThis.parentNode.children[i].getElementsByTagName("ul")[0] &&
                     (oThis.parentNode.children[i].getElementsByTagName("ul")[0].style.display = "none");
                 }
             },300);
         };
-    }   
-    
+    }
     
     //自定义右键菜单
     document.oncontextmenu = function (event){
