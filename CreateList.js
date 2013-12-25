@@ -27,7 +27,7 @@ CreateList.prototype = {
         }
         this.oWrap.id = "wrap";
         this.copyright.id = "copyright";
-        this.copyright.innerHTML = "\u539f\u751fJavaScript\u5b66\u4e60, QQ:21314130, By &mdash; Ferris 京ICP备10209901号";
+        this.copyright.innerHTML = '<a href="http://pandoraui.github.io/learning-javascript">\u539f\u751fJavaScript\u5b66\u4e60</a>, QQ:21314130, By &mdash; Ferris 京ICP备10209901号';
         document.body.appendChild(this.oWrap);
         document.body.appendChild(this.copyright)
     },
