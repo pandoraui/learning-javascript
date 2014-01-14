@@ -1,11 +1,12 @@
 function CreateList() {
     this.oWrap = document.createElement("div");
+    this.oTitle = document.createElement("div");
     this.copyright = document.createElement("div");
     this.initialize.apply(this, arguments);
     this.click.call(this)
 }
 CreateList.prototype = {
-    initialize: function(aData) {       
+    initialize: function(aData) {
         var oDl, oElem, project, i;
         while(aData[0]) {
             oDl = document.createElement("dl");
@@ -25,9 +26,12 @@ CreateList.prototype = {
             this.oWrap.appendChild(oDl);
             aData.shift()
         }
+        this.oTitle.className = "xtitle";
+        this.oTitle.innerHTML = "<h2>Ferris 的课程</h2>";
         this.oWrap.id = "wrap";
         this.copyright.id = "copyright";
         this.copyright.innerHTML = '<a href="http://pandoraui.github.io/learning-javascript">\u539f\u751fJavaScript\u5b66\u4e60</a>, QQ:21314130, By &mdash; Ferris 京ICP备10209901号';
+        document.body.appendChild(this.oTitle);
         document.body.appendChild(this.oWrap);
         document.body.appendChild(this.copyright)
     },
