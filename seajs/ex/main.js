@@ -14,7 +14,13 @@ define(function(require,exports,module){
     
         oDiv1.style.display = 'block';
         
-        require('./scale.js').scale(oDiv1,oDiv2);
+        //同步加载
+        //require('./scale.js').scale(oDiv1,oDiv2);
+        
+        //异步加载，按需载入
+        require.async('./scale.js',function(ex){
+            ex.scale(oDiv1,oDiv2);
+        });
     
     }
     
