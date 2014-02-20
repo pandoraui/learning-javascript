@@ -3,23 +3,57 @@
 <head>
 <meta charset="utf-8">
 <title>ajax示例</title>
+<style>
+#support{border:1px solid #ddd;width:200px;display:none;}
+li{list-style:none;}
+</style>
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script>
 $(function(){ 
-    $.ajax({
-        type: "get",
-        async: false,
-        url: "//pandoraui.github.io/learning-javascript/json/data1.js",
-        dataType: "jsonp",
-        jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
-        jsonpCallback:"cityHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
-        success: function(json){
-            //alert('您查询到航班信息：票价： ' + json.price + ' 元，余票： ' + json.tickets + ' 张。');
-        },
-        error: function(){
-            alert('fail');
+    $("#search").keyup(function(){
+        var key = $(this).val();
+        var html = "";
+        if(!($("#support").length>0)){
+            $("body").append('<div id="support"></div>');
         }
-    });
+        
+        function supportList(html){
+            $("#support").html(html).show();
+        }
+        $.ajax({
+            type: "get",
+            async: false,
+            url: "//pandoraui.github.io/learning-javascript/json/data1.js",
+            dataType: "jsonp",
+            jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(一般默认为:callback)
+            jsonpCallback:"cityHandler",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名，也可以写"?"，jQuery会自动为你处理数据
+            success: function(json){
+                //alert('您查询到航班信息：票价： ' + json.price + ' 元，余票： ' + json.tickets + ' 张。');
+                //alert(json.totalResultSize);
+                //data = json.placeListJson;
+                //html = data;
+                console.time("time")
+                html = "<ul>" + getData(json.placeListJson) + "</ul>";
+                supportList(html);
+                console.timeEnd("time")
+            },
+            error: function(){
+                alert('fail');
+            }
+        });
+        
+        function getData(data){
+            for (var i=0;i<data.length;i++){
+                html +="<li>" + data[i].name + data[i].pinYin + data[i].channel + "</li>";
+            }
+            return html;
+        }
+        
+        
+    })
+
+
+    
 });
 
 
@@ -37,6 +71,9 @@ $(function(){
     <p>本文摘自：<a href="http://www.cnblogs.com/dowinning/archive/2012/04/19/json-jsonp-jquery.html">【原创】说说JSON和JSONP，也许你会豁然开朗，含jQuery用例</a></p>
     
     <p>效果参看控制台及源码</p>
+    
+    <input id="search" type="text" />
+    
     
 </body>
 </html>
