@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="sea/sea.js"></script>
+<script>
+
+//seajs.use : 页面去调用模块，第一参数：模块的地址，第二参数：地址加载成功后的回调函数
+
+//seajs的默认根目录 ： sea.js
+
+seajs.use('./js/test1.js',function(ex){
+    ex.tab();
+});
+
+</script>
+</head>
+<body>
+    <p>示例教程地址：<a href="http://www.miaov.com/2013/miaovideo/miaovideo.html" target="_blank">http://www.miaov.com/2013/miaovideo/miaovideo.html</a></p>
+</body>
+</html>
+
