@@ -1,4 +1,6 @@
+
 //seajs 示例
+
 define(function(require,exports,module){
     
     //exports : 对外的借口
@@ -9,7 +11,8 @@ define(function(require,exports,module){
     
     function tab(){
         //alert(a);
-        alert( require('./test2.js').a );
+        //alert( require('./test2.js').a );
+        document.getElementById('demo').innerHTML = require('./test2.js').a;
     }
     
     exports.tab = tab;
