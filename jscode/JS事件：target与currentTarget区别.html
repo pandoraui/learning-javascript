@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<title></title>
+<script>document.write('<link type= "text/css" rel="stylesheet" href="http://pic.lvmama.com/styles/v5/base.css" />');</script>
+<style>
+body{padding:10px 20px;}
+p{margin:20px 0;font-size:14px;line-height:26px;}
+#outer,#inner{display:inline-block;margin:10px;padding:10px;height:200px;}
+#inner{height:100px;}
+</style>
+</head>
+<body>
+    <h1>JS事件：target与currentTarget区别 <small><a href="http://www.cnblogs.com/wkylin/archive/2011/08/25/2153538.html">link</a></small></h1>
+    <p>target在事件流的目标阶段；currentTarget在事件流的捕获，目标及冒泡阶段。只有当事件流处在目标阶段的时候，两个的指向才是一样的， 而当处于捕获和冒泡阶段的时候，target指向被单击的对象而currentTarget指向当前事件活动的对象（一般为父级）。</p>
+    <div id="outer" style="background:#099">
+        div: click outer
+        <p id="inner" style="background:#9C0">p: click inner</p>
+        <br>  
+    </div>
+    <p>上面的示例中，当在outer上点击时，e.target与e.currentTarget是一样的，都是div；当在inner上点击时，e.target是p，而e.currentTarget则是div。</p>
+    <p><strong>个人理解：</strong>e.target 总是指向点击目标，而e.currentTarget 指向当前绑定事件的活动对象。</p>
+</body>
+<script>
+    function G(id){
+        return document.getElementById(id);
+    }
+    function addEvent(obj, ev, handler){
+        if(window.attachEvent){
+            obj.attachEvent("on" + ev, handler);
+        }else if(window.addEventListener){
+            obj.addEventListener(ev, handler, false);
+        }
+    }
+    function test(e){
+        alert("e.target.tagName : " + e.target.tagName + "\n e.currentTarget.tagName : " + e.currentTarget.tagName);
+    }  
+    var outer = G("outer");
+    var inner = G("inner");
+    //addEvent(inner, "click", test);
+    addEvent(outer, "click", test);
+</script>
+</html>
