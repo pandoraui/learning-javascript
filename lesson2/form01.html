@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Form</title>
+</head>
+<style>
+form {
+    font-family: Arial;
+    font-size: 14px;
+    width: 300px;
+}
+    
+fieldset {
+    border: 1px solid #CCC;
+    margin-bottom: 10px;
+}
+    
+fieldset.login input {
+    width: 135px;
+}
+    
+legend {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+    
+label {
+    display: block;
+    width: 60px;
+    text-align: right;
+    float: left;
+    padding-right: 10px;
+    margin: 5px 0;
+}
+    
+input {
+    margin: 5px 0;
+    height: 22px;
+}
+    
+input.text {
+    padding: 0 0 0 3px;
+    width: 172px;
+}
+    
+input.submit {
+    margin: 15px 0 0 70px;
+}
+
+
+</style>
+<script>
+function checkRequired(elem){
+    if(elem.type == "checkbox" || elem.type == "radio"){
+        return getInputsByName(elem.name).numChecked;
+    }else{
+        console.log(elem.value.length >0 && elem.value != elem.defaultValue)
+        return elem.value.length >0 && elem.value != elem.defaultValue;
+    }
+}
+
+function getInputsByName(name){
+    //alert(111)
+    var results = [];
+    results.numChecked = 0;
+    
+    var input = document.getElementsByTagName("input");
+    for(var i=0;i<input.length;i++){
+        if(input[i].name == name){
+            results.push(input[i]);
+            if(input[i].checked){
+                results.numChecked++;
+            }
+        }
+    }
+    return results;
+}
+
+window.onload = function(){
+    //console.log(document.getElementsByTagName("form"))
+    document.getElementsByTagName("form")[0].onsubmit = function(){
+        var elem = document.getElementById("age");
+        
+        if(! checkRequired(elem)){
+            alert("Required filed is empty - " +
+                "you must be over 13 to use this site.");
+            return false;
+        }
+        
+        var elem = document.getElementById("name");
+        
+        if(! checkRequired(elem)){
+            alert("Required field is empty - please provide you name.");
+            return false;
+        }
+        
+    }
+}
+</script>
+<body>
+<form action="" method="post">
+    <fieldset class="login">
+      <legend>Login Information</legend>
+      <label for="username" class="hover">Username</label>
+      <input type="text" id="username" class="required text"/>
+        
+      <label for="password" class="hover">Password</label>
+      <input type="password" id="password" class="required text"/>
+    </fieldset>
+    <fieldset>
+        <legend>Personal Information</legend>
+        
+        <label for="name">Name</label>
+        <input type="text" id="name" class="required text"/><br/>
+        
+        <label for="email">Email</label>
+        <input type="text" id="email" class="required email text"/><br/>
+        
+        <label for="date">Date</label>
+        <input type="text" id="date" class="required date text"/><br/>
+        
+        <label for="url">Website</label>
+        <input type="text" id="url" class="url text" value="http://"/><br/>
+        
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" class="phone text"/><br/>
+
+        <label for="age">Over 13?</label>
+        <input type="checkbox" id="age" name="age" value="yes"/><br/>
+        
+        <input type="submit" value="Submit Form" class="submit"/>
+    </fieldset>
+</form>
+
+</body>
+</html>
+
