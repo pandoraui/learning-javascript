@@ -47,9 +47,54 @@ input.submit {
     margin: 15px 0 0 70px;
 }
 
+ul.errors{
+    list-style:none;
+    background:#ffcece;
+    padding:3px;
+    margin:3px 0 3px 70px;
+    font-size:0.9em;
+    width:165px;
+}
 
 </style>
+
+<body>
+<form action="" method="post">
+    <fieldset class="login">
+      <legend>Login Information</legend>
+      <label for="username" class="hover">Username</label>
+      <input type="text" id="username" class="required text"/>
+        
+      <label for="password" class="hover">Password</label>
+      <input type="password" id="password" class="required text"/>
+    </fieldset>
+    <fieldset>
+        <legend>Personal Information</legend>
+        
+        <label for="name">Name</label>
+        <input type="text" id="name" class="required text"/><br/>
+        
+        <label for="email">Email</label>
+        <input type="text" id="email" class="required email text"/><br/>
+        
+        <label for="date">Date</label>
+        <input type="text" id="date" class="required date text"/><br/>
+        
+        <label for="url">Website</label>
+        <input type="text" id="url" class="url text" value="http://"/><br/>
+        
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" class="phone text"/><br/>
+
+        <label for="age">Over 13?</label>
+        <input type="checkbox" id="age" name="age" value="yes"/><br/>
+        
+        <input type="submit" value="Submit Form" class="submit"/>
+    </fieldset>
+</form>
+<script src="addEvent.js"></script>
 <script>
+//规则集合
 var errMsg = {
     
     required: {
@@ -97,46 +142,76 @@ var errMsg = {
     
 }
 
+//验证及触发错误信息显示
+function validateForm(form,load){
+    var valid = true;
+    
+    for(var i=0;i<form.elements.length;i++){
+        hideErrors(form.elements[i]);
+        
+        if(!validateField(form.elements[i],load)){
+            valid = false;
+        }
+        
+        return valid;
+    }
+}
 
+function validateFiled(elem,load){
+    var errors = [];
+    
+    for (var name in errMsg){
+        var re = new RegExp("(^|\\s)"+name+"(\\s|$)");
+        
+        if(re.test(elem.calssname)&& !errMsg[name].test(elem,load)){
+            errors.push(errMsg[name].msg);
+        }
+        
+        if(errors.length){
+            showErrors(elem,errors);
+        }
+        
+        return errors.length>0;
+    }
+}
 
+function hideErrors(elem){
+    var next = elem.nextSibling;
+    
+    if (next && next.nodeName == "UL" && next.className == "errors"){
+        elem.parentNode.removeChild(next);
+    }
+}
 
+function showErrors(elem,errors){
+    var next = elem.nextSibling;
+    
+    if(next && (next.nodeName != "UL" || next.className != "errors")){
+        next = document.createElement("ul");
+        next.className = "errors";
+        elem.parentNode.insertBefore(next,elem.nextSibling)
+    }
+    
+    for(var i=0;i<errors.length; i++){
+        var li = document.createElement("li");
+        li.innerHTML = errors[i];
+        
+        next.appendChild(li);
+    }
+}
+
+//何时验证
+function watchForm(form){
+    addEvent(form,'submit',function(){
+        return validateForm(form);
+    })
+}
+
+var form = document.getElementsByTagName("form")[0];
+
+watchForm(form);
 
 </script>
-<body>
-<form action="" method="post">
-    <fieldset class="login">
-      <legend>Login Information</legend>
-      <label for="username" class="hover">Username</label>
-      <input type="text" id="username" class="required text"/>
-        
-      <label for="password" class="hover">Password</label>
-      <input type="password" id="password" class="required text"/>
-    </fieldset>
-    <fieldset>
-        <legend>Personal Information</legend>
-        
-        <label for="name">Name</label>
-        <input type="text" id="name" class="required text"/><br/>
-        
-        <label for="email">Email</label>
-        <input type="text" id="email" class="required email text"/><br/>
-        
-        <label for="date">Date</label>
-        <input type="text" id="date" class="required date text"/><br/>
-        
-        <label for="url">Website</label>
-        <input type="text" id="url" class="url text" value="http://"/><br/>
-        
-        <label for="phone">Phone</label>
-        <input type="text" id="phone" class="phone text"/><br/>
-
-        <label for="age">Over 13?</label>
-        <input type="checkbox" id="age" name="age" value="yes"/><br/>
-        
-        <input type="submit" value="Submit Form" class="submit"/>
-    </fieldset>
-</form>
-
 </body>
 </html>
 
