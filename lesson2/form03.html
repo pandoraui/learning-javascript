@@ -78,7 +78,7 @@ ul.errors{
         <input type="text" id="email" class="required email text"/><br/>
         
         <label for="date">Date</label>
-        <input type="text" id="date" class="required date text"/><br/>
+        <input type="text" id="date" class="required date text" value="112"/><br/>
         
         <label for="url">Website</label>
         <input type="text" id="url" class="url text" value="http://"/><br/>
@@ -149,12 +149,13 @@ function validateForm(form,load){
     for(var i=0;i<form.elements.length;i++){
         hideErrors(form.elements[i]);
         
-        if(!validateField(form.elements[i],load)){
+        if(!validateFiled(form.elements[i],load)){
             valid = false;
         }
         
-        return valid;
     }
+    
+    return valid;
 }
 
 function validateFiled(elem,load){
@@ -163,16 +164,16 @@ function validateFiled(elem,load){
     for (var name in errMsg){
         var re = new RegExp("(^|\\s)"+name+"(\\s|$)");
         
-        if(re.test(elem.calssname)&& !errMsg[name].test(elem,load)){
+        if(re.test(elem.className)&& !errMsg[name].test(elem,load)){
             errors.push(errMsg[name].msg);
         }
         
-        if(errors.length){
-            showErrors(elem,errors);
-        }
-        
-        return errors.length>0;
     }
+    if(errors.length){
+        showErrors(elem,errors);
+    }
+    
+    return errors.length>0;
 }
 
 function hideErrors(elem){
@@ -201,6 +202,8 @@ function showErrors(elem,errors){
 }
 
 //何时验证
+
+//表单提交时验证
 function watchForm(form){
     addEvent(form,'submit',function(){
         return validateForm(form);
@@ -209,7 +212,31 @@ function watchForm(form){
 
 var form = document.getElementsByTagName("form")[0];
 
+
 watchForm(form);
+
+//字段改变时验证
+function watchFileds(form){
+    for (var i=0;i<form.elements.length;i++){
+        addEvent(form.elements[i],'change',function(){
+            return validateFiled(this);
+        });
+    }
+}
+
+var form = document.getElementsByTagName("form")[0];
+
+watchFileds(form);
+
+//页面加载时验证
+addEvent(window,"load",function(){
+    var forms = document.getElementsByTagName("form");
+    
+    for(var i=0;i<forms.length;i++){
+        validateForm(form[i],true);
+    }
+});
+
 
 </script>
 </body>
